@@ -108,4 +108,78 @@ def game():
             print("Bad parameters!")
 
 
+def easy(value):
+    now_bot = random.choice(bot)
+    field[now_bot] = value
+    print('Making move level "easy"')
+    print_field()
+    bot.remove(int(now_bot))
+
+
+def medium(value):
+    now_bot = random.choice(bot)
+    for line in win_lines:
+        if field[line[0]] == field[line[1]] == ("X" or "O") and field[line[2]] == '_':
+            now_bot = line[2]
+        elif field[line[0]] == field[line[2]] == ("X" or "O") and field[line[1]] == '_':
+            now_bot = line[1]
+        elif field[line[1]] == field[line[2]] == ("X" or "O") and field[line[0]] == '_':
+            now_bot = line[0]
+    field[now_bot] = value
+    print('Making move level "medium"')
+    print_field()
+    bot.remove(int(now_bot))
+
+
+def hard(value):
+    scores = {
+        value_chek(value): -100,
+        value: 100,
+        'draw': 0
+    }
+    now_bot = get_computer_position(value, scores)
+    field[now_bot] = value
+    print('Making move level "hard"')
+    print_field()
+    bot.remove(int(now_bot))
+
+
+def user(value):
+    while True:
+        coordinates = input("Enter the coordinates:")
+        if check(coordinates):
+            field[dic[coordinates]] = value
+            print_field()
+            bot.remove(int(dic[coordinates]))
+            break
+
+
+def minimax(board, depth, is_ai_turn, value, scores):
+    if win_up(board) != 0:
+        return scores[win_up(board)]
+    if is_ai_turn:
+        # выбираем ход который нам выгодней
+        best_score = - sys.maxsize
+        a = -1
+        for i in board:
+            a += 1
+            if i == EMPTY_CHAR:
+                board[a] = value
+                score = minimax(board, depth + 1, USER_TURN, value, scores)
+                board[a] = EMPTY_CHAR
+                best_score = max(best_score, score)
+    else:
+        # противник выбирает ход который нам не выгоден
+        best_score = sys.maxsize
+        a = -1
+        for i in board:
+            a += 1
+            if i == EMPTY_CHAR:
+                board[a] = value_chek(value)
+                score = minimax(board, depth + 1, AI_TURN, value, scores)
+                board[a] = EMPTY_CHAR
+                best_score = min(best_score, score)
+    return best_score
+
+
 
