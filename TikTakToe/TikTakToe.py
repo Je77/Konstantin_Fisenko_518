@@ -49,4 +49,18 @@ def check(coordinates):
             return False
 
 
+def wins():
+    win = [field[line[0]] for line in win_lines if field[line[0]] == field[line[1]] == field[line[2]]
+           and field[line[0]] != '_']
+    if any(win):
+        print(f"{win[0]} wins")
+        return exit()
+    else:
+        if '_' not in field:
+            print("Draw")
+            return exit()
+        else:
+            return
+
+
 
