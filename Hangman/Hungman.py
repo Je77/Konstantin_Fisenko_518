@@ -26,3 +26,10 @@ while True:
                                 't', 'u', 'v', 'w', 'x', 'y', 'z']:
                 print('It is not an ASCII lowercase letter')
                 print(life)
+            elif letter in try_words:
+                print('No improvements')
+                life -= 1
+                print(life)
+            elif letter in random_word:
+                print(life)
+
