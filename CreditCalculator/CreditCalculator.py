@@ -11,4 +11,17 @@ parser.add_argument('--interest', help="Credit interest (rate of interest)", typ
 args = parser.parse_args()
 
 
+if args.type not in ['annuity', 'diff'] or args.type == 'diff' and args.payment != None:
+    print('Incorrect Parameters')
+    exit()
+
+i = args.interest / (12 * 100)
+
+if args.type == 'diff' and args.periods != None and args.principal != None and args.interest != None:
+    count = 0
+    for j in range(1, args.periods + 1):
+        diff = ceil(args.principal / args.periods + i * (args.principal - (args.principal * (j - 1)) / args.periods))
+        print(('Month {}: paid out {}').format(j, diff))
+        count += diff
+    print(f"\nOverpayment = {count - args.principal}")
 
