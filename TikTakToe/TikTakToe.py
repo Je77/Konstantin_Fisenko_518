@@ -182,4 +182,26 @@ def minimax(board, depth, is_ai_turn, value, scores):
     return best_score
 
 
+def value_chek(value):
+    return 'O' if value == 'X' else 'X'
 
+
+def get_computer_position(value, scores):
+    move = None
+    best_score = -sys.maxsize
+    board = field
+    a = -1
+    for i in board:
+        a += 1
+        if i == EMPTY_CHAR:
+            board[a] = value
+            score = minimax(board, 0, USER_TURN, value, scores)
+            board[a] = EMPTY_CHAR
+            if score > best_score:
+                best_score = score
+                move = a
+
+    return move
+
+
+game()
