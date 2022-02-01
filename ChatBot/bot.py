@@ -15,3 +15,18 @@ number += 1
 for i in range(number):
     print(i, "!")
 print('Completed, have a nice day!')
+print("Let's test your programming knowledge.")
+print("Почему мы используем методы?")
+print("1. Повторить высказывание несколько раз.")
+print("2. Разложить программу на несколько небольших подпрограмм.")
+print("3. Определить время выполнения программы.")
+print("4. Прервать выполнение программы.")
+num = input(":")
+while True:
+    if num == "2":
+        print('Completed, have a nice day!')
+        print("Congratulations, have a nice day!")
+        break
+    else:
+        print("Please, try again.")
+        num = input(":")
