@@ -47,4 +47,15 @@ while True:
             for letter in random_word:
                 if letter in try_words:
                     print(letter, end='')
-
+                else:
+                    print('-', end='')
+            if random_word_set == set(try_words):
+                print('')
+                print("You guessed the word!")
+                print("You survived")
+                break
+        else:
+            print('')
+            print("out!")
+    elif answer == 'exit':
+        break
