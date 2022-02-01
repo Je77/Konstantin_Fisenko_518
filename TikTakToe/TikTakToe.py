@@ -18,4 +18,35 @@ dic = {"1 1": 0, "1  1": 0, "1  2": 1, "1 2": 1, "1 3": 2, "1  3": 2, "2 1": 3, 
 EMPTY_CHAR = "_"
 
 
+def print_field():
+    print('---------')
+    print('|', field[0], field[1], field[2], '|')
+    print('|', field[3], field[4], field[5], '|')
+    print('|', field[6], field[7], field[8], '|')
+    print('---------')
+
+
+def check(coordinates):
+    try:
+        if field[dic[coordinates]] != '_':
+            print("This cell is occupied! Choose another one!")
+            return False
+        else:
+            return True
+    except KeyError:
+        try:
+            first, second = coordinates.split(' ')
+            if first and second not in ('1', '2', '3', '4', '5', '6', '7', '8', '9'):
+                print("You should enter numbers!")
+                return False
+            elif first not in ('1', '2', '3') or second not in ('1', '2', '3'):
+                print("Coordinates should be from 1 to 3!")
+                return False
+            else:
+                return True
+        except ValueError:
+            print("You should enter numbers!")
+            return False
+
+
 
