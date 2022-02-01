@@ -85,3 +85,25 @@ while True:
                         CoffeeMachine.money += 6
                         print("I have enough resources, making you a coffee!")
                         print(" ")
+                    else:
+                        print("Sorry, not enough coffee milk!")
+                        print(" ")
+                else:
+                    print("Sorry, not enough coffee beans!")
+                    print(" ")
+            else:
+                print("Sorry, not enough water!")
+                print(" ")
+        elif cups_of_with == "fill":
+            water_add = int(input("Write how many ml of water do you want to add:"))
+            CoffeeMachine.water = CoffeeMachine.water + water_add
+            milk_add = int(input("Write how many ml of milk do you want to add:"))
+            CoffeeMachine.milk = CoffeeMachine.milk + milk_add
+            coffee_add = int(input("Write how many grams of coffee beans do you want to add:"))
+            CoffeeMachine.coffee = CoffeeMachine.coffee + coffee_add
+            cups_add = int(input("Write how many disposable cups of coffee do you want to add:"))
+            CoffeeMachine.cups = CoffeeMachine.cups + cups_add
+        elif cups_of_with == "take":
+            print(" ")
+            print(f"I gave you ${CoffeeMachine.money}")
+            CoffeeMachine.money = 0
