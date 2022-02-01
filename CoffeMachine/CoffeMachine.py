@@ -38,3 +38,16 @@ while True:
         print(" ")
         buy_number = input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:")
         if buy_number == 'back':
+            continue
+        if buy_number == '1' and CoffeeMachine.cups != 0:
+            if water_can_espresso >= 1:
+                if coffee_can_espresso >= 1:
+                    CoffeeMachine.water -= 250
+                    CoffeeMachine.coffee -= 16
+                    CoffeeMachine.cups -= 1
+                    CoffeeMachine.money += 4
+                    print("I have enough resources, making you a coffee!")
+                    print(" ")
+                else:
+                    print("Sorry, not enough coffee beans!")
+                    print(" ")
