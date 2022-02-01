@@ -9,3 +9,9 @@ remainder5 = (float(input("на 5:")))
 remainder7 = (float(input("на 7:")))
 age = (remainder3 * 70 + remainder5 * 21 + remainder7 * 15) % 105
 print("Your age is " + str(age) + "; that's a good time to start programming!")
+print('Now I will prove to you that I can count to any number you want.')
+number = int(input())
+number += 1
+for i in range(number):
+    print(i, "!")
+print('Completed, have a nice day!')
