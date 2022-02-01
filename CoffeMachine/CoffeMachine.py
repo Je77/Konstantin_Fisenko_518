@@ -29,4 +29,12 @@ while True:
     coffee_can_cappuccino = CoffeeMachine.coffee // 12
     milk_can_cappuccino = CoffeeMachine.milk // 100
 
-
+    cups_of_with = input("Write action (buy, fill, take, remaining, exit):")
+    if cups_of_with == 'remaining':
+        print_has()
+    if cups_of_with == 'exit':
+        break
+    if cups_of_with == 'buy':
+        print(" ")
+        buy_number = input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:")
+        if buy_number == 'back':
