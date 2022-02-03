@@ -12,3 +12,13 @@ print("Your age is " + str(age) + "; that's a good time to start programming!")
 print('Now I will prove to you that I can count to any number you want.')
 number = int(input())
 number += 1
+for i in range(number):
+    print(i, "!")
+print('Completed, have a nice day!')
+print("Let's test your programming knowledge.")
+print("Почему мы используем методы?")
+print("1. Повторить высказывание несколько раз.")
+print("2. Разложить программу на несколько небольших подпрограмм.")
+print("3. Определить время выполнения программы.")
+print("4. Прервать выполнение программы.")
+num = input(":")
