@@ -22,3 +22,11 @@ print("2. Разложить программу на несколько небо
 print("3. Определить время выполнения программы.")
 print("4. Прервать выполнение программы.")
 num = input(":")
+while True:
+    if num == "2":
+        print('Completed, have a nice day!')
+        print("Congratulations, have a nice day!")
+        break
+    else:
+        print("Please, try again.")
+        num = input(":")
