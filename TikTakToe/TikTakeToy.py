@@ -116,3 +116,31 @@ def easy(value):
     bot.remove(int(now_bot))
 
 
+def medium(value):
+    now_bot = random.choice(bot)
+    for line in win_lines:
+        if field[line[0]] == field[line[1]] == ("X" or "O") and field[line[2]] == '_':
+            now_bot = line[2]
+        elif field[line[0]] == field[line[2]] == ("X" or "O") and field[line[1]] == '_':
+            now_bot = line[1]
+        elif field[line[1]] == field[line[2]] == ("X" or "O") and field[line[0]] == '_':
+            now_bot = line[0]
+    field[now_bot] = value
+    print('Making move level "medium"')
+    print_field()
+    bot.remove(int(now_bot))
+
+
+def hard(value):
+    scores = {
+        value_chek(value): -100,
+        value: 100,
+        'draw': 0
+    }
+    now_bot = get_computer_position(value, scores)
+    field[now_bot] = value
+    print('Making move level "hard"')
+    print_field()
+    bot.remove(int(now_bot))
+
+
