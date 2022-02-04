@@ -74,3 +74,23 @@ while True:
             else:
                 print("Sorry, not enough water!")
                 print(" ")
+        elif buy_number == '3' and CoffeeMachine.cups != 0:
+            if water_can_cappuccino >= 1:
+                if coffee_can_cappuccino >= 1:
+                    if milk_can_latte >= 1:
+                        CoffeeMachine.water -= 200
+                        CoffeeMachine.milk -= 100
+                        CoffeeMachine.coffee -= 12
+                        CoffeeMachine.cups -= 1
+                        CoffeeMachine.money += 6
+                        print("I have enough resources, making you a coffee!")
+                        print(" ")
+                    else:
+                        print("Sorry, not enough coffee milk!")
+                        print(" ")
+                else:
+                    print("Sorry, not enough coffee beans!")
+                    print(" ")
+            else:
+                print("Sorry, not enough water!")
+                print(" ")
