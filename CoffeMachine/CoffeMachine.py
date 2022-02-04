@@ -65,3 +65,12 @@ while True:
                         CoffeeMachine.money += 7
                         print("I have enough resources, making you a coffee!")
                         print(" ")
+                    else:
+                        print("Sorry, not enough coffee milk!")
+                        print(" ")
+                else:
+                    print("Sorry, not enough coffee beans!")
+                    print(" ")
+            else:
+                print("Sorry, not enough water!")
+                print(" ")
