@@ -32,3 +32,15 @@ elif args.type ==  "annuity":
     elif args.periods != None and args.payment != None and args.interest != None:
         principal = floor(args.payment / (i * pow(1 + i, args.periods) / (pow(1 + i, args.periods) - 1)))
         print(f"Your loan principal = {principal}!\nOverpayment = {args.payment * args.periods - principal}")
+   elif args.payment != None and args.principal != None and args.interest != None:
+        month =ceil(log(args.payment / (args.payment - i * args.principal), 1 + i))
+        overpayment = month * args.payment - args.principal
+        y = month // 12
+        m = month % 12
+        if m == 0:
+            print('You need', y, 'years to repay this credit!')
+        elif y == 0:
+            print('You need', m, 'months to repay this credit!')
+        else:
+            print('You need', y, 'years and', m, 'months to repay this credit!')
+        print('Overpayment = ', overpayment)
