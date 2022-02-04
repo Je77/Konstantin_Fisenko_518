@@ -31,4 +31,17 @@ while True:
                 life -= 1
                 print(life)
 
-
+            elif letter != random_word:
+                if letter in vse_bukvi and letter not in try_words:
+                    print("You've already guessed this letter.")
+                else:
+                    life -= 1
+                    print("That letter does not appear in the word")
+                    print(life)
+            vse_bukvi.append(letter)
+            for i in random_word:
+                if letter == i:
+                    try_words.append(letter)
+            for letter in random_word:
+                if letter in try_words:
+                    print(letter, end='')
