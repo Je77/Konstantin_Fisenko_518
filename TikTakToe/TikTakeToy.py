@@ -144,3 +144,64 @@ def hard(value):
     bot.remove(int(now_bot))
 
 
+def user(value):
+    while True:
+        coordinates = input("Enter the coordinates:")
+        if check(coordinates):
+            field[dic[coordinates]] = value
+            print_field()
+            bot.remove(int(dic[coordinates]))
+            break
+
+
+def minimax(board, depth, is_ai_turn, value, scores):
+    if win_up(board) != 0:
+        return scores[win_up(board)]
+    if is_ai_turn:
+        # выбираем ход который нам выгодней
+        best_score = - sys.maxsize
+        a = -1
+        for i in board:
+            a += 1
+            if i == EMPTY_CHAR:
+                board[a] = value
+                score = minimax(board, depth + 1, USER_TURN, value, scores)
+                board[a] = EMPTY_CHAR
+                best_score = max(best_score, score)
+    else:
+        # противник выбирает ход который нам не выгоден
+        best_score = sys.maxsize
+        a = -1
+        for i in board:
+            a += 1
+            if i == EMPTY_CHAR:
+                board[a] = value_chek(value)
+                score = minimax(board, depth + 1, AI_TURN, value, scores)
+                board[a] = EMPTY_CHAR
+                best_score = min(best_score, score)
+    return best_score
+
+
+def value_chek(value):
+    return 'O' if value == 'X' else 'X'
+
+
+def get_computer_position(value, scores):
+    move = None
+    best_score = -sys.maxsize
+    board = field
+    a = -1
+    for i in board:
+        a += 1
+        if i == EMPTY_CHAR:
+            board[a] = value
+            score = minimax(board, 0, USER_TURN, value, scores)
+            board[a] = EMPTY_CHAR
+            if score > best_score:
+                best_score = score
+                move = a
+
+    return move
+
+
+game()
