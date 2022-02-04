@@ -15,5 +15,16 @@ while True:
     if answer == 'play':
         while life != 0:
             letter = input((f"""
-        
+        H A N G M A N
+        Guess the word:"""))
+            if len(letter) != 1:
+                print('You should print a single letter')
+                print(life)
+            elif letter not in ['a', 'b', 'c', 'd', 'e', 'f', 'g',
+                                'h', 'i', 'j', 'k', 'l', 'm', 'n',
+                                'o', 'p', 'q', 'r', 's',
+                                't', 'u', 'v', 'w', 'x', 'y', 'z']:
+                print('It is not an ASCII lowercase letter')
+                print(life)
+
 
