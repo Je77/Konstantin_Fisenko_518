@@ -49,3 +49,70 @@ def check(coordinates):
             return False
 
 
+def wins():
+    win = [field[line[0]] for line in win_lines if field[line[0]] == field[line[1]] == field[line[2]]
+           and field[line[0]] != '_']
+    if any(win):
+        print(f"{win[0]} wins")
+        return exit()
+    else:
+        if '_' not in field:
+            print("Draw")
+            return exit()
+        else:
+            return
+
+
+def win_up(board):
+    win = [board[line[0]] for line in win_lines if board[line[0]] == board[line[1]] == board[line[2]]
+           and board[line[0]] != '_']
+    if any(win):
+        return win[0]
+    else:
+        if '_' not in field:
+            return 'draw'
+        else:
+            return 0
+
+
+def game():
+    while True:
+        command = input("Input command:")
+        if command in ["start easy easy", "start user easy", "start user user", "start easy user",
+                       "start medium medium", "start user medium", "start medium user",
+                       "start hard user", "start user hard", "start hard hard"]:
+            print_field()
+            while True:
+                _, one, two = command.split(' ')
+                if one == "easy":
+                    easy("X")
+                elif one == "medium":
+                    medium("X")
+                elif one == "hard":
+                    hard("X")
+                else:
+                    user("X")
+                wins()
+                if two == "easy":
+                    easy("O")
+                elif two == "medium":
+                    medium("O")
+                elif two == "hard":
+                    hard("O")
+                else:
+                    user("O")
+                wins()
+        elif command == "exit":
+            exit()
+        else:
+            print("Bad parameters!")
+
+
+def easy(value):
+    now_bot = random.choice(bot)
+    field[now_bot] = value
+    print('Making move level "easy"')
+    print_field()
+    bot.remove(int(now_bot))
+
+
