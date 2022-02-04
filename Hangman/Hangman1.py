@@ -30,8 +30,6 @@ while True:
                 print('No improvements')
                 life -= 1
                 print(life)
-            elif letter in random_word:
-                print(life)
 
             elif letter != random_word:
                 if letter in vse_bukvi and letter not in try_words:
@@ -47,4 +45,3 @@ while True:
             for letter in random_word:
                 if letter in try_words:
                     print(letter, end='')
-                
